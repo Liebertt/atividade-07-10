@@ -23,9 +23,11 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: npm install, build, and test
+      - name: npm clean install
+        # MUDANÇA CRÍTICA: Usando 'npm ci' para garantir uma instalação limpa
+        # e mais estável em ambientes de CI/CD, resolvendo prováveis erros de cache/instalação.
         run: |
-          npm install
+          npm ci
           # Note: 'npm run build' and 'npm run test' são ignorados neste projeto simples
           
       - name: Upload artifact for deployment job
